@@ -39,7 +39,10 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  strong.innerHTML = '<i class="material-icons" style="vertical-align:middle;">person</i> <b>User</b>';
+
 </head>
+
 <body>
 
 
@@ -61,8 +64,9 @@
             <span class="author-block">
               Paper ID : 655</span>
           </div>
-<!-- 
-          <div class="is-size-5 publication-authors">
+
+
+<!-- <div class="is-size-5 publication-authors">
             <span class="author-block"><sup></sup></span>
             <span class="author-block"><sup></sup></span>
           </div> -->
@@ -169,10 +173,10 @@
   </div>
 </section>
 
-<section class="section" id="ShareGPT4V">
+<section class="section" id="VAT-KG Dataset Tables">
   <div class="columns is-centered has-text-centered">
     <div class="column is-six-fifths">
-      <h2 class="title is-3">  Dataset (100K)</h2>
+      <h2 class="title is-3"> VAT-KG Dataset (100K)</h2>
     </div>
   </div>
   <!-- <div class="container is-max-desktop"> -->
@@ -186,21 +190,24 @@
               background-color: #ffffff;
               border-collapse: collapse;
               border-width: 2px;
-              border-color: #c1c4c5;
+              border-color: #83aab6;
               border-style: solid;
               color: #000000;
+              text-align: center; /* ✅ 가운데 정렬 추가 */
             }
             
             table.GeneratedTable td, table.GeneratedTable th {
               border-width: 2px;
-              border-color: #9b9d9e;
+              border-color: #939fa4;
               border-style: solid;
               padding: 3px;
+              text-align: center; /* ✅ 각 셀도 가운데 정렬 */
             }
             
             table.GeneratedTable thead {
               background-color: #6691ee;
             }
+
           </style>
           <div class="column is-six-fifths" width="80%">
             <table class="GeneratedTable" border="1" cellspacing="0" cellpadding="5">
@@ -316,16 +323,16 @@
                 </tr>
               </tbody>
             </table>
-            
-          <p style="font-family:Times New Roman">
-            <figcaption class="custom-caption">
-              <strong> Overview of notable Multimodal Knowledge Graph (MMKG) constructions.</strong> 
-          </figcaption>
-          </p>               
+            <div class="has-text-centered">
+              <figcaption class="custom-caption">
+                <strong>Comparison of VAT-KG with existing MMKGs.</strong>  </figcaption>             
           </div>
-          <font color="#224baf" size=4><b>
-            <table border="1" cellspacing="0" cellpadding="6">
+
+          <br><br/>
+          <div class="column is-six-fifths" width="80%">
+            <table class="GeneratedTable" border="1" cellspacing="0" cellpadding="5">
               <thead>
+
                 <tr>
                   <th>Principle</th>
                   <th>InternVid-FLT(10%)</th>
@@ -378,7 +385,10 @@
                 </tr>
               </tbody>
             </table>
-            
+            <div class="has-text-centered">
+              <figcaption class="custom-caption">
+                <strong> Data sample counts at each stage of the filtering process </strong>  </figcaption>             
+          </div>
               </div>
             </div>
           </p>
@@ -389,9 +399,8 @@
   </div>
 </section>
 
-<br>
-<br/>
-    <!-- Paper video. -->
+
+    <!-- Statistics-->
     <section class="section">
       <div class="container">
         <div class="columns is-centered has-text-centered">
@@ -411,9 +420,6 @@
       </div>
     </section>
     
-    <!--/ Paper video. -->
-  </div>
-</section>
 
 
 <section class="section">
@@ -421,142 +427,211 @@
 
     <div class="columns is-centered">
 
-      <!-- Visual Effects. -->
+      <!-- MMKGs -->
       <div class="column">
         <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
+          <h2 class="title is-3">MMKGs</h2>
           <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
+            (a) A non-concept-centric case involving various
+            modalities. (b) Concept-centric case with limited
+            modalities. (c) Our proposed VAT-KG, which is
+            concept-centric and covers four modalities.
           </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src=""
-                    type="video/mp4">
-          </video>
+          <img src="./static/teaser_new_v3.png" alt="Teaser" style="width: 100%; margin-bottom:10px; height: auto;" />
+
         </div>
       </div>
-      <!--/ Visual Effects. -->
+      <!--/ Existing MMKGs. -->
 
-      <!-- Matting. -->
+      <!-- Triplet Example -->
       <div class="column">
-        <h2 class="title is-3">Matting</h2>
+        <h2 class="title is-3">Example Triplet in VAT-KG</h2>
         <div class="columns is-centered">
           <div class="column content">
             <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
+              A multi-modal triplet from VAT-KG, composed of video,
+              audio, and text. Each head and tail is linked to a
+              detailed concept-level description.
             </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src=""
-                      type="video/mp4">
-            </video>
-          </div>
 
+            <img src="./static/teaser_mod_v4.png" alt="Teaser" style="width: 100%; margin-bottom:10px; height: auto;" />
+          </div>
         </div>
       </div>
     </div>
-    <!--/ Matting. -->
+    <!--/ MMKGs. -->
 
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
+    <br><br/>    
+       <!-- Statistics-->
+       <section class="section">
+        <div class="container">
+          <div class="columns is-centered has-text-centered">
+            <div class="column">
+              <h2 class="title is-3">Multi-modal Rag Framework</h2>
+              <div class="dataset-statistics">
+                <img src="./static/pipeline_v10.png" alt="Dataset statistics" style="width: 100%; margin-bottom:10px; height: auto;" />
+                <figcaption class="custom-caption">
+                  <strong> An overview of Multimodal RAG Framework.</strong> 
+                   Given a query from any modality (audio,
+                  video, or text), (1) Modality-Agnostic Retrieval retrieves up to five semantically relevant triplets from
+                  VAT-KG based on embedding similarity; (2) Retrieval Checker filters out misaligned triplets by using
+                  the text encoder of the same multimodal foundation model; (3) Augmented Generation with MLLMs
+                  that support audio-visual understanding.
+                </figcaption>
+              </div>
             </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
           </div>
         </div>
-        <br/>
-        <!--/ Interpolating. -->
+      </section>
 
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <!--/ Re-rendering. -->
+<br>  <br/>
 
-      </div>
+<!-- Question Answering Examples Section -->
+<section class="section" style="background-color:#efeff081" id="examples">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-six-fifths">
+      <h2 class="title is-3">Question Answering Examples</h2>
     </div>
-    <!--/ Animation. -->
+  </div>
 
-
-    <!-- Concurrent Work. -->
+  <div class="container is-max-widescreen">
     <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
+      <div class="column is-full">
+        <div class="card mb-4">
+          <div class="card-body" id="selected-question" style="height: 80vh; overflow-y: auto;">
+            <div class="chat-history"></div>
+          </div>
+        </div>
 
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
+        <!-- Navigation Buttons -->
+        <div class="field is-grouped is-grouped-centered">
+          <p class="control">
+            <button class="button is-primary" id="prev-question">
+              <span class="icon"><i class="material-icons">keyboard_arrow_left</i></span>
+            </button>
           </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          <p class="control">
+            <button class="button is-primary" id="next-question">
+              <span class="icon"><i class="material-icons">keyboard_arrow_right</i></span>
+            </button>
           </p>
         </div>
       </div>
     </div>
-    <!--/ Concurrent Work. -->
-
   </div>
 </section>
 
+<script>
+  const conversations = [
+    {
+      "description": "Example 1",
+      "turns": [
+        ["Video", "", "images/examples/conv_case_1.png"],
+        ["User", "What is happening in this image?"],
+        ["VAT-KG", "The image shows a child standing on a chair to reach grapes hanging from above, blending real fruit with a drawing to create a 3D illusion."]
+      ]
+    },
+    {
+      "description": "Example 2",
+      "turns": [
+        ["User", "", "images/examples/conv_case_2.png"],
+        ["User", "Why is this photo considered beautiful?"],
+        ["VAT-KG", "The soft orange light from the balloon against the night sky creates contrast and drama, while the calm beach and silhouettes give it depth and serenity."]
+      ]
+    },
+    {
+      "description": "Example 3",
+      "turns": [
+        ["User", "", "images/examples/conv_case_3.png"],
+        ["User", "What is the catchphrase of the man in this scene?"],
+        ["VAT-KG", "\"I am the one who knocks.\" — iconic quote by Walter White from Breaking Bad."]
+      ]
+    }
+  ];
+
+  let currentIndex = 0;
+
+  function createChatRow(sender, text, imageSrc) {
+    const article = document.createElement("article");
+    article.className = "media";
+
+    if (sender !== "Description") {
+  const figure = document.createElement("figure");
+  figure.className = "media-left";
+  const span = document.createElement("span");
+  span.className = "icon is-large";
+
+  const emoji = document.createElement("span");
+  emoji.style = "font-size: 36px; line-height: 1;";
+  emoji.textContent = sender === "User" ? "🧑" : "🤖";
+
+  span.appendChild(emoji);
+  figure.appendChild(span);
+  article.appendChild(figure);
+}
+
+
+    const media = document.createElement("div");
+    media.className = "media-content";
+    const content = document.createElement("div");
+    content.className = "content";
+    const para = document.createElement("p");
+    const strong = document.createElement("strong") ; 
+    strong.innerHTML = sender === "User" ? "🧑 <b>User</b>" : "🤖 <b>VAT-KG</b>";
+
+    strong.textContent = sender;
+    para.appendChild(strong);
+    para.appendChild(document.createElement("br"));
+
+    const pre = document.createElement("pre");
+    pre.style = "background:transparent;font-size:16px;white-space:pre-wrap;";
+    pre.textContent = text;
+    para.appendChild(pre);
+
+    if (imageSrc) {
+      const img = document.createElement("img");
+      img.src = imageSrc;
+      img.style = "max-width:100%;max-height:300px;";
+      para.appendChild(img);
+    }
+
+    content.appendChild(para);
+    media.appendChild(content);
+    article.appendChild(media);
+    return article;
+  }
+
+  function update_dialog_demo() {
+    const chatHistory = document.querySelector('.chat-history');
+    chatHistory.innerHTML = '';
+    const turns = conversations[currentIndex].turns;
+    turns.forEach(([sender, text, imageSrc]) => {
+      const chatRow = createChatRow(sender, text, imageSrc);
+      chatHistory.appendChild(chatRow);
+    });
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    update_dialog_demo();
+    document.getElementById('prev-question').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + conversations.length) % conversations.length;
+      update_dialog_demo();
+    });
+    document.getElementById('next-question').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % conversations.length;
+      update_dialog_demo();
+    });
+  });
+</script>
 
 
 
+
+<!-- Footer, License of project page source code -->
+<br><br/>
 <footer class="footer">
-  <div class="container">
+  <div class="container is-max-widescreen">
     <div class="content has-text-centered">
       <a class="icon-link"
          href="./static/videos/nerfies_paper.pdf">
