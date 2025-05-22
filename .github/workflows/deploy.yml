@@ -1,9 +1,9 @@
-name: Deploy to GitHub Pages
+name: Deploy Jekyll site to Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # 또는 사용 중인 브랜치
 
 permissions:
   contents: read
@@ -11,19 +11,30 @@ permissions:
   id-token: write
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-
-      - name: Upload static files
-        uses: actions/upload-pages-artifact@v2
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
         with:
-          path: nips2025-655.github.io/index.html  # 또는 docs/, build/ 등 정적 HTML 있는 디렉토리로 수정
+          source: ./
+          destination: ./_site
 
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v2
