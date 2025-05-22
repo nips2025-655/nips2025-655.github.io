@@ -561,6 +561,7 @@
     box-sizing: border-box;
   }
 </style>
+
 </head>
 <body>
 
@@ -575,7 +576,7 @@
       <div class="columns is-centered">
         <div class="column is-full">
           <div class="card mb-4">
-            <div class="card-body" id="selected-question" style="height: 80vh; overflow-y: auto;">
+            <div class="card-body" id="selected-question" style="max-height: calc(100vh - 160px); overflow-y: auto;">
               <div class="chat-history"></div>
             </div>
           </div>
@@ -599,6 +600,8 @@
   
 
 <script>
+  var span = document.createElement("span");
+        span.className = "icon is-large";
   const conversations = [
     {
       "description": "Example 1",
@@ -643,6 +646,7 @@ function createChatRow(sender, text, imageSrc) {
     if (sender === "User") emoji.textContent = "🧑";
     else if (sender === "Base") emoji.textContent = "🤖";
     else if (sender === "Ours") emoji.textContent = "🤖";
+
     span.appendChild(emoji);
     figure.appendChild(span);
     article.appendChild(figure);
