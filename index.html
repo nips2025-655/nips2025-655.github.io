@@ -55,15 +55,15 @@
               <br/>
             <span class="author-block">
               Datasets and Benchmarks Track</span>
+              <br/>
             <span class="author-block">
-              <a href=""></a><sup></sup>
-
+              Paper ID : 655</span>
           </div>
-
+<!-- 
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup></sup></span>
             <span class="author-block"><sup></sup></span>
-          </div>
+          </div> -->
 
           <div class="column has-text-centered">
             <div class="publication-links">
@@ -98,7 +98,7 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href=""
+                <a href="https://huggingface.co/nips25/VATKG_CODE"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -108,7 +108,7 @@
               </span>
               <!-- Dataset Link. -->
               <span class="link-block">
-                <a href=""
+                <a href="https://huggingface.co/datasets/nips25/vat_kg"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
@@ -131,12 +131,10 @@
     <div class="columns is-centered has-text-centered" style="width: 100%; margin: 10px 10px 0;">
         <div class="column" style="width: 100%; padding: 0;">
             <h2 class="title is-3"> Overview </h2>
-
         <img src="./static/overview_v12.png" alt="Teaser" style="width: 100%; margin-bottom:10px; height: auto;" />
         <figcaption class="custom-caption">
           <strong> VAT-KG Overview.</strong> 
-          An overview of the VAT-KG construction pipeline. The construction of VAT-KG involves four stages: (1) Multimodal Alignment Filtering, ensuring correlation across modalities;
-(2) Knowledge-Intensive Recaptioning, which transforms base text into rich, knowledge-intensive caption based on meta information; (3) Multimodal Triplet Grounding, which aligns triplets with corresponding multimodal context; (4) Cross-Modal Description Alignment, which retrieves fine-grained descriptions from external knowledge bases and matches them to each multimodal triplet.
+          An overview of the VAT-KG construction pipeline. The construction of VAT-KG involves four stages: (1) Multimodal Alignment Filtering, ensuring correlation across modalities; (2) Knowledge-Intensive Recaptioning, which transforms base text into rich, knowledge-intensive caption based on meta information; (3) Multimodal Triplet Grounding, which aligns triplets with corresponding multimodal context; (4) Cross-Modal Description Alignment, which retrieves fine-grained descriptions from external knowledge bases and matches them to each multimodal triplet.
       </figcaption>
       </div>
     </div>
@@ -144,49 +142,196 @@
 </div>
 </section>
 
-
-<section class="section">
+<section class="section"  style="background-color:#efeff081" id="Abstract">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+      <div class="column is-six-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
-          </p>
-          <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
-          </p>
-          <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
+            Multimodal Knowledge Graphs (MMKGs), which represent explicit knowledge across multiple modalities, play a pivotal role by complementing the implicit knowledge of Multimodal Large Language Models (MLLMs) and enabling more grounded reasoning via Retrieval Augmented Generation (RAG).
+            However, existing MMKGs are generally limited in scope: they are often constructed by augmenting pre-existing knowledge graphs, which restricts their knowledge, resulting in outdated or incomplete knowledge coverage, and they often support only a narrow range of modalities, such as text and visual information.
+            These limitations reduce their extensibility and applicability to a broad range of multimodal tasks, particularly as the field shifts toward richer modalities such as video and audio in recent MLLMs.
+            Therefore, we propose the Visual-Audio-Text Knowledge Graph (VAT-KG), the first concept-centric and knowledge-intensive multimodal knowledge graph that covers visual, audio, and text information, where each triplet is linked to multimodal data and enriched with detailed descriptions of concepts.
+            Specifically, our construction pipeline ensures cross-modal knowledge alignment between multimodal data and fine-grained semantics through a series of stringent filtering and alignment steps, enabling the automatic generation of MMKGs from any multimodal dataset.
+            We further introduce a novel multimodal RAG framework that retrieves detailed concept-level knowledge in response to queries from arbitrary modalities.
+            Experiments on question answering tasks across various modalities demonstrate the effectiveness of VAT-KG in supporting MLLMs, highlighting its practical value in unifying and leveraging multimodal knowledge. 
           </p>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
-<div> </div>
+  </div>
+</section>
 
 
-    <br/>
+<section class="section" id="ShareGPT4V">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-six-fifths">
+      <h2 class="title is-3"> VAT-KG Dataset (100K)</h2>
+    </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+          <style>
+            table.GeneratedTable {
+              width: 100%;
+              background-color: #ffffff;
+              border-collapse: collapse;
+              border-width: 2px;
+              border-color: #c1c4c5;
+              border-style: solid;
+              color: #000000;
+            }
+            
+            table.GeneratedTable td, table.GeneratedTable th {
+              border-width: 2px;
+              border-color: #9b9d9e;
+              border-style: solid;
+              padding: 3px;
+            }
+            
+            table.GeneratedTable thead {
+              background-color: #6691ee;
+            }
+          </style>
+          <div class="column is-six-fifths" width="80%">
+            <table class="GeneratedTable" border="1" cellspacing="0" cellpadding="5">
+              <thead>
+                <tr>
+                  <th>Dataset</th>
+                  <th>Year</th>
+                  <th>Text</th>
+                  <th>Image</th>
+                  <th>Audio</th>
+                  <th>Video</th>
+                  <th>Concept centric</th>
+                  <th>Downstream task</th>
+                  <th>Data source</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>IMGpedia</td>
+                  <td>2017</td>
+                  <td>✔︎</td><td>✔︎</td><td>✗</td><td>✗</td>
+                  <td>✗</td>
+                  <td>Link-prediction</td>
+                  <td>Wikimedia Commons, DBpedia</td>
+                </tr>
+                <tr>
+                  <td>ImageGraph</td>
+                  <td>2017</td>
+                  <td>✔︎</td><td>✔︎</td><td>✗</td><td>✗</td>
+                  <td>✗</td>
+                  <td>Local Ranking</td>
+                  <td>FB15k</td>
+                </tr>
+                <tr>
+                  <td>MMKG</td>
+                  <td>2019</td>
+                  <td>✔︎</td><td>✔︎</td><td>✗</td><td>✗</td>
+                  <td>✗</td>
+                  <td>Link-prediction, Reasoning</td>
+                  <td>FB15k, DB15k, YAGO15k, Search Engine</td>
+                </tr>
+                <tr>
+                  <td>Richpedia</td>
+                  <td>2020</td>
+                  <td>✔︎</td><td>✔︎</td><td>✗</td><td>✗</td>
+                  <td>✗</td>
+                  <td>Retrieval</td>
+                  <td>Wikidata, Wikimedia, Search Engine</td>
+                </tr>
+                <tr>
+                  <td>VisualSem</td>
+                  <td>2020</td>
+                  <td>✔︎</td><td>✔︎</td><td>✗</td><td>✗</td>
+                  <td>✗</td>
+                  <td>Retrieval</td>
+                  <td>BabelNet</td>
+                </tr>
+                <tr>
+                  <td>MarKG</td>
+                  <td>2023</td>
+                  <td>✔︎</td><td>✔︎</td><td>✗</td><td>✗</td>
+                  <td>✔︎</td>
+                  <td>Link-prediction, Reasoning</td>
+                  <td>Wikipedia, Search Engine</td>
+                </tr>
+                <tr>
+                  <td>AspectMMKG</td>
+                  <td>2023</td>
+                  <td>✔︎</td><td>✔︎</td><td>✗</td><td>✗</td>
+                  <td>✔︎</td>
+                  <td>Entity aspect linking</td>
+                  <td>Wikipedia, Search Engine</td>
+                </tr>
+                <tr>
+                  <td>VCTKG</td>
+                  <td>2023</td>
+                  <td>✔︎</td><td>✔︎</td><td>✗</td><td>✗</td>
+                  <td>✔︎</td>
+                  <td>Link-prediction</td>
+                  <td>ConceptNet, WordNet</td>
+                </tr>
+                <tr>
+                  <td>TIVA-KG</td>
+                  <td>2023</td>
+                  <td>✔︎</td><td>✔︎</td><td>✗</td><td>✔︎</td>
+                  <td>✗</td>
+                  <td>Link-prediction</td>
+                  <td>Wikipedia, Search Engine</td>
+                </tr>
+                <tr>
+                  <td>UKnow</td>
+                  <td>2024</td>
+                  <td>✔︎</td><td>✔︎</td><td>✗</td><td>✔︎</td>
+                  <td>✔︎</td>
+                  <td>Reasoning, Retrieval</td>
+                  <td>Wikipedia, News</td>
+                </tr>
+                <tr>
+                  <td>M<sup>2</sup>ConceptBase</td>
+                  <td>2024</td>
+                  <td>✔︎</td><td>✔︎</td><td>✗</td><td>✔︎</td>
+                  <td>✔︎</td>
+                  <td>VQA</td>
+                  <td>Image-text Corpora, Encyclopedia, LLM</td>
+                </tr>
+                <tr bgcolor="#d3d3d3">
+                  <td><b>VAT-KG</b></td>
+                  <td><b>2025</b></td>
+                  <td>✔︎</td><td>✔︎</td><td>✔︎</td><td>✔︎</td>
+                  <td>✔︎</td>
+                  <td>AQA, VQA, AVQA</td>
+                  <td>Video-Audio-Text Corpora,Encyclopedia, LLM</td>
+                </tr>
+              </tbody>
+            </table>
+            
+          <p style="font-family:Times New Roman">
+            <figcaption class="custom-caption">
+              <strong> Overview of notable Multimodal Knowledge Graph (MMKG) constructions.</strong> 
+          </figcaption>
+
+          </p>               
+          </div>
+          <font color="#224baf" size=4><b>
+ 
+              </div>
+            </div>
+          </p>
+          </b></font>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<br>
+<br/>
     <!-- Paper video. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
