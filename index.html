@@ -203,7 +203,7 @@
               border-color: #83aab6;
               border-style: solid;
               color: #000000;
-              text-align: center; /* ✅ 가운데 정렬 추가 */
+              text-align: center;
             }
             
             table.GeneratedTable td, table.GeneratedTable th {
@@ -211,7 +211,7 @@
               border-color: #939fa4;
               border-style: solid;
               padding: 3px;
-              text-align: center; /* ✅ 각 셀도 가운데 정렬 */
+              text-align: center; 
             }
             
             table.GeneratedTable thead {
@@ -691,15 +691,36 @@ function createChatRow(sender, text, imageSrc) {
     const span = document.createElement("span");
     span.className = "icon is-large";
     const emoji = document.createElement("span");
-    if (sender === "User") emoji.textContent = "🧑";
-    else if (sender === "vl2") emoji.textContent = "🤖";
-    else if (sender === "vl2-M2") emoji.textContent = "🤖";
+    // if (sender === "User") emoji.textContent = "🧑";
+    // else if (sender === "vl2") emoji.textContent = "🤖";
+    // else if (sender === "vl2-M2") emoji.textContent = "🤖";
 
-    else if (sender === "qwen") emoji.textContent = "🤖";
-    else if (sender === "qwen-M2") emoji.textContent = "🤖";
+    // else if (sender === "qwen") emoji.textContent = "🤖";
+    // else if (sender === "qwen-M2") emoji.textContent = "🤖";
 
-    else if (sender === "vl2-ours") emoji.textContent = "🤖";
-    else if (sender === "qwen-ours") emoji.textContent = "🤖";
+    // else if (sender === "vl2-ours") emoji.textContent = "🤖";
+    // else if (sender === "qwen-ours") emoji.textContent = "🤖";
+
+    const emojiImg = document.createElement("img");
+    emojiImg.style.width = "50px";  // 원하는 사이즈로 조절
+    emojiImg.style.height = "50px";
+    emojiImg.style.borderRadius = "20%";  // 둥글게
+
+    if (sender === "User") {
+      emojiImg.src = "./static/user_12756012.png";
+      emojiImg.alt = "User";
+    } 
+    else if (sender === "vl2", "qwen") {
+      emojiImg.src = "./static/idea_12667620.png";
+      emojiImg.alt = "User";
+    }
+    
+span.appendChild(emojiImg);
+
+
+
+
+
     span.appendChild(emoji);
     figure.appendChild(span);
     article.appendChild(figure);
@@ -822,7 +843,8 @@ document.addEventListener("DOMContentLoaded", function () {
     </section>
     
 
-<br><br/>
+<br>
+<br/>
 <!-- Footer -->
 <footer class="footer">
   <div class="container is-max-widescreen">
@@ -843,7 +865,7 @@ document.addEventListener("DOMContentLoaded", function () {
           </p>
           <p>
             You are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            just remember to provide credit and remove analytics if unnecessary.
+            just remember to provide credit and remove analytics if unnecessary
           </p>
         </div>
       </div>
