@@ -616,6 +616,7 @@
       "turns": [
         ["User", "Describe in detail what is visually and audibly happening in the video, including actions, objects, people, sounds, and environment.Be specific and concise.", "./static/sinsesizer.mp4"],
         ["vl2", "\"The video shows a person using <b style='color:#d33; font-weight:550; font-family:inherit;'>a remote control to turn on a light. </b> The person is also seen using a colorful button on a <b style='color:#d33; font-weight:600; font-family:inherit;'> keyboard</b>, a white box with buttons and lights, and a musical instrument with colorful buttons. There is a close-up of the person’s hands<b style='color:#d33; font-weight:600; font-family:inherit;'> typing on a keyboard </b>with colorful buttons\"" ] ,
+        ["vl2-M2", "\"The video shows a person using a <b style='color:#d33; font-weight:550; font-family:inherit;'>remote control to turn on a light. </b>The person is also seen using a colorful button on a table, <b style='color:#d33; font-weight:550; font-family:inherit;'>keyboard, and electronic device.</b> There are also close-ups of the person's hands typing on a keyboard and using a music maker. The video also features concepts such as computer music, charging heads, and the idea of a <b style='color:#d33; font-weight:550; font-family:inherit;'>\'rich fruit\'' or \'fruit king.\'</b> \"" ] ,
         ["vl2-ours", "\"The video shows a person using <b style='color:#337ab7; font-weight:550; font-family:inherit;'> a synthesizer to make music.</b> The person is playing the synthesizer with their hands, <b style='color:#337ab7; font-weight:600; font-family:inherit;'> creating a rhythmic and melodic sound.</b> The synthesizer has many buttons and knobs that the person is using to create different sounds. The video also shows a close-up of the person's hands as they play the <b style='color:#337ab7; font-weight:550; font-family:inherit;'>synthesizer.</b>\"" ]
       ]
     },
@@ -624,6 +625,7 @@
       "turns": [
         ["User", "Describe in detail what is visually and audibly happening in the video, including actions, objects, people, sounds, and environment.Be specific and concise.", "./static/hamster.mp4"],
         ["qwen", "\"A blurry image of a hamster cage is shown, with a pink and white plastic swing hanging from the top. The cage is placed on a wooden surface, and there is a small green bowl filled with food on the left side of the cage. The cage is surrounded by a white fence, and there are some lights visible in the background.  <b style='color:#d33; font-weight:550; font-family:inherit;'> The hamster is not visible in the video.</b>\""],
+        ["qwen-M2", "\"The video begins with a blurry close-up of a hand, which is partially obscuring the view. As the camera focuses, a wooden surface comes into view, revealing a small, colorful toy boat in the background. <b style='color:#d33; font-weight:550; font-family:inherit;'>The boat is pink with white and red accents, and it appears to be part of a larger playset.</b> The wooden surface is shiny, reflecting light and <b style='color:#d33; font-weight:550; font-family:inherit;'>possibly water droplets scattered across it</b>.\""],
         ["qwen-ours", "\"The video depicts a close-up view of a hamster's cage, focusing on the hamster's activities. <b style='color:#337ab7; font-weight:550; font-family:inherit;'> The hamster is seen moving around inside the cage, which is placed on a wooden surface.</b> The cage is made of mesh material, allowing visibility of the hamster's movements. In the background, there are colorful objects, possibly<b style='color:#337ab7; font-weight:550; font-family:inherit;'> toys or accessories for the hamster,</b> adding a playful element to the scene.\""]
       ]
     },
@@ -631,32 +633,36 @@
       "description": "Example 3",
       "turns": [
         ["User", "What is the man wearing and what is he holding?", "./static/discus.mp4"],
-        ["vl2", "\"The man is wearing a white shirt and black shorts, and he is holding a ball.\""],
-        ["vl2-ours", "\"The man in the video is wearing a white shirt and black shorts. He is holding a discus, which he spins around several times before throwing it off into the distance.\""]
+        ["vl2", "\"The man is wearing a white shirt and black shorts, and he is holding<b style='color:#d33; font-weight:550; font-family:inherit;'> a ball.</b>\""],
+        ["vl2-M2", "\"The man in the video is wearing a white shirt and black shorts. He is holding <b style='color:#d33; font-weight:550; font-family:inherit;'> a ball</b> and appears to be practicing his throwing skills on an open field.\""],
+        ["vl2-ours", "\"The man in the video is wearing a white shirt and black shorts. He is holding <b style='color:#337ab7; font-weight:550; font-family:inherit;'>a discus, which he spins around several times before throwing it off into the distance.</b>\""]
       ]
     },
     {
       "description": "Example 4",
       "turns": [
         ["User", "What is the catchphrase of the man in this scene?", "./static/taichi.mp4"],
-        ["qwen", "\"The man in the video is practicing martial arts.\""],
-        ["qwen-ours", "\"The man in the video is performing Tai Chi 24 Form, a structured sequence of movements that enhance physical fitness, mental clarity, and internal energy flow through slow, balanced, and synchronized movements.\""],
+        ["qwen", "\"The man in the video is practicing <b style='color:#d33; font-weight:550; font-family:inherit;'>martial arts.</b>\""],
+        ["qwen-M2", "\"The man in the video is performing a martial arts exercise, specifically a form of <b style='color:#d33; font-weight:550; font-family:inherit;'>martial arts known as 'Slant Flying'</b>. This exercise is part of a larger practice that includes various martial arts techniques. The video emphasizes the importance of maintaining balance and fluidity in movements, which are key aspects of martial arts training.\""],
+        ["qwen-ours", "\"The man in the video is performing <b style='color:#337ab7; font-weight:550; font-family:inherit;'>Tai Chi 24 Form, </b>a structured sequence of movements that enhance physical fitness, mental clarity, and internal energy flow through slow, balanced, and synchronized movements.\""],
       ]
     },
     {
       "description": "Example 5",
       "turns": [
         ["User", "What is shown in the video? Options: Tractor ploughing, Bulldozer, Lower price, Earth digging by excavator", "./static/excavator.mp4"],
-        ["vl2", "\"Tractor ploughing\""],
-        ["vl2-ours", "\"Earth digging by excavator.\""],
+        ["vl2", "\" <b style='color:#d33; font-weight:550; font-family:inherit;'>Tractor ploughing</b>\""],
+        ["vl2-M2", "\" <b style='color:#d33; font-weight:550; font-family:inherit;'>Tractor ploughing</b>\""],
+        ["vl2-ours", "\"<b style='color:#337ab7; font-weight:550; font-family:inherit;'>Earth digging by excavator.</b>\""],
       ]
     },
     {
       "description": "Example 6",
       "turns": [
         ["User", "What is the main sound source of the video? Options : sound of wind, hail, The sound of a waterfall, thunder", "./static/hail.mp4"],
-        ["qwen", "\The sound of a waterfall.\""],
-        ["qwen-ours", "\"hail.\""]
+        ["qwen", "\" <b style='color:#d33; font-weight:550; font-family:inherit;'>The sound of a waterfall.</b>\""],
+        ["qwen-M2", "\" <b style='color:#d33; font-weight:550; font-family:inherit;'>The sound of a waterfall.</b>\""],
+        ["qwen-ours", "\"<b style='color:#337ab7; font-weight:550; font-family:inherit;'>hail.</b>\""]
       ]
     }
 
@@ -678,7 +684,10 @@ function createChatRow(sender, text, imageSrc) {
     const emoji = document.createElement("span");
     if (sender === "User") emoji.textContent = "🧑";
     else if (sender === "vl2") emoji.textContent = "🤖";
+    else if (sender === "vl2-M2") emoji.textContent = "🤖";
+
     else if (sender === "qwen") emoji.textContent = "🤖";
+    else if (sender === "qwen-M2") emoji.textContent = "🤖";
 
     else if (sender === "vl2-ours") emoji.textContent = "🤖";
     else if (sender === "qwen-ours") emoji.textContent = "🤖";
@@ -697,7 +706,11 @@ function createChatRow(sender, text, imageSrc) {
   const strong = document.createElement("strong");
   if (sender === "User") strong.innerHTML = "<b>User</b>";
   else if (sender === "vl2") strong.innerHTML = "<b>VideoLLaMA2</b>";
+  else if (sender === "vl2-M2") strong.innerHTML = "<b>VideoLLaMA + M2ConceptBase</b>";
+
   else if (sender === "qwen") strong.innerHTML = "<b>Qwen2.5-Omni</b>";
+  else if (sender === "qwen-M2") strong.innerHTML = "<b>Qwen2.5-Omni + M2ConceptBase</b>";
+
   else if (sender === "vl2-ours") strong.innerHTML = "<b>VideoLLaMA2 + VAT-KG (Ours) </b>";
   else if (sender === "qwen-ours") strong.innerHTML = "<b>Qwen2.5-Omni + VAT-KG (Ours) </b>";
 
@@ -727,8 +740,12 @@ function createChatRow(sender, text, imageSrc) {
   bubble.className = "chat-bubble";
   if (sender === "User") bubble.classList.add("user");
   else if (sender === "vl2") bubble.classList.add("vl2");
+  else if (sender === "vl2-M2") bubble.classList.add("vl2");
   else if (sender === "qwen") bubble.classList.add("qwen");
+  else if (sender === "qwen-M2") bubble.classList.add("qwen");
+
   else if (sender === "vl2-ours") bubble.classList.add("vl2");
+  
   else if (sender === "qwen-ours") bubble.classList.add("qwen");
 
 
