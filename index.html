@@ -727,10 +727,10 @@ span.appendChild(emojiImg);
   const strong = document.createElement("strong");
   if (sender === "User") strong.innerHTML = "<b>User</b>";
   else if (sender === "vl2") strong.innerHTML = "<b>VideoLLaMA2</b>";
-  else if (sender === "vl2-M2") strong.innerHTML = "<b>VideoLLaMA + M2ConceptBase</b>";
+  else if (sender === "vl2-M2") strong.innerHTML = "<b>VideoLLaMA + >M<sup>2</sup>ConceptBase</b>";
 
   else if (sender === "qwen") strong.innerHTML = "<b>Qwen2.5-Omni</b>";
-  else if (sender === "qwen-M2") strong.innerHTML = "<b>Qwen2.5-Omni + M2ConceptBase</b>";
+  else if (sender === "qwen-M2") strong.innerHTML = "<b>Qwen2.5-Omni +>M<sup>2</sup>ConceptBase</b>";
 
   else if (sender === "vl2-ours") strong.innerHTML = "<b>VideoLLaMA2 + VAT-KG (Ours) </b>";
   else if (sender === "qwen-ours") strong.innerHTML = "<b>Qwen2.5-Omni + VAT-KG (Ours) </b>";
