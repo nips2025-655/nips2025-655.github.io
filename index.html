@@ -497,9 +497,9 @@
     margin-bottom: 10px;
     width: 100%;
     font-family: 'Segoe UI', sans-serif;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     line-height: 1.5;
-    color: #333;
+    color: #000000;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 
@@ -508,12 +508,21 @@
     border-bottom: 2px solid #90caf9;
   }
 
-  .chat-bubble.base {
-    background: #e0e0e0;
+  .chat-bubble.vl2 {
+    background: #e4fde3;
+    border-bottom: 2px solid #b3f990;
+  }
+  .chat-bubble.vl2-ours {
+    background: #d9f8b3;
   }
 
-  .chat-bubble.ours {
-    background: #eeeeee;
+  .chat-bubble.qwen {
+    background: #fdf3e3;
+    border-bottom: 2px solid #f9cd90;
+  }
+
+  .chat-bubble.qwen-ours {
+    background: #ffe2b7;
   }
 
   .chat-video-wrapper {
@@ -606,27 +615,36 @@
     {
       "description": "Example 1",
       "turns": [
-        ["User", "Describe in detail what is visually and audibly happening in the video, including actions, objects, people, sounds, and environment.Be specific and concise", "./static/sinsesizer.mp4"],
-        ["Base", " The video shows a person using a remote control to turn on a light .The person is also seen using a colorful button on a keyboard, a white box with buttons and lights, and a musical instrument with colorful buttons. There is a close-up of the person’s hands typing on a keyboard with colorful buttons" ] ,
-        ["Ours", " The video shows a person using a synthesizer to make music. The person is playing the synthesizer with their hands, creating a rhythmic and melodic sound. The synthesizer has many buttons and knobs that the person is using to create different sounds. The video also shows a close-up of the person's hands as they play the synthesizer." ]
+        ["User", "Describe in detail what is visually and audibly happening in the video, including actions, objects, people, sounds, and environment.Be specific and concise.", "./static/sinsesizer.mp4"],
+        ["vl2", " The video shows a person using a remote control to turn on a light .The person is also seen using a colorful button on a keyboard, a white box with buttons and lights, and a musical instrument with colorful buttons. There is a close-up of the person’s hands typing on a keyboard with colorful buttons" ] ,
+        ["vl2-ours", " The video shows a person using a synthesizer to make music. The person is playing the synthesizer with their hands, creating a rhythmic and melodic sound. The synthesizer has many buttons and knobs that the person is using to create different sounds. The video also shows a close-up of the person's hands as they play the synthesizer." ]
       ]
     },
     {
       "description": "Example 2",
       "turns": [
-        ["User", "Describe in detail what is visually and audibly happening in the video, including actions, objects, people, sounds, and environment.Be specific and concise", "./static/hamster.mp4"],
-        ["Base", "Why is this photo considered beautiful?"],
-        ["Ours", "The soft orange light from the balloon against the night sky creates contrast and drama, while the calm beach and silhouettes give it depth and serenity."]
+        ["User", "Describe in detail what is visually and audibly happening in the video, including actions, objects, people, sounds, and environment.Be specific and concise.", "./static/hamster.mp4"],
+        ["qwen", "`A blurry image of a hamster cage is shown, with a pink and white plastic swing hanging from the top. The cage is placed on a wooden surface, and there is a small green bowl filled with food on the left side of the cage. The cage is surrounded by a white fence, and there are some lights visible in the background. The hamster is not visible in the video.”"],
+        ["qwen-ours", " The video depicts a close-up view of a hamster's cage, focusing on the hamster's activities. The hamster is seen moving around inside the cage, which is placed on a wooden surface. The cage is made of mesh material, allowing visibility of the hamster's movements. In the background, there are colorful objects, possibly toys or accessories for the hamster, adding a playful element to the scene.”"]
       ]
     },
     {
       "description": "Example 3",
       "turns": [
         ["User", "What is the catchphrase of the man in this scene?", "./static/discus.mp4"],
+        ["vl2", "What is the catchphrase of the man in this scene?"],
+        ["vl2-ours", "\"I am the one who knocks.\" — iconic quote by Walter White from Breaking Bad."]
+      ]
+    },
+    {
+      "description": "Example 4",
+      "turns": [
+        ["User", "What is the catchphrase of the man in this scene?", "./static/excavator.mp4"],
         ["Base", "What is the catchphrase of the man in this scene?"],
         ["Ours", "\"I am the one who knocks.\" — iconic quote by Walter White from Breaking Bad."]
       ]
     }
+
   ];
 
 
@@ -644,9 +662,11 @@ function createChatRow(sender, text, imageSrc) {
     span.className = "icon is-large";
     const emoji = document.createElement("span");
     if (sender === "User") emoji.textContent = "🧑";
-    else if (sender === "Base") emoji.textContent = "🤖";
-    else if (sender === "Ours") emoji.textContent = "🤖";
+    else if (sender === "vl2") emoji.textContent = "🤖";
+    else if (sender === "qwen") emoji.textContent = "🤖";
 
+    else if (sender === "vl2-ours") emoji.textContent = "🤖";
+    else if (sender === "qwen-ours") emoji.textContent = "🤖";
     span.appendChild(emoji);
     figure.appendChild(span);
     article.appendChild(figure);
@@ -660,8 +680,11 @@ function createChatRow(sender, text, imageSrc) {
 
   const strong = document.createElement("strong");
   if (sender === "User") strong.innerHTML = "<b>User</b>";
-  else if (sender === "Base") strong.innerHTML = "<b>Baseline</b>";
-  else if (sender === "Ours") strong.innerHTML = "<b>MLLM+VAT-KG</b>";
+  else if (sender === "vl2") strong.innerHTML = "<b>VideoLLaMA2</b>";
+  else if (sender === "qwen") strong.innerHTML = "<b>Qwen2.5-Omni</b>";
+  else if (sender === "vl2-ours") strong.innerHTML = "<b>VideoLLaMA2 + VAT-KG (Ours) </b>";
+  else if (sender === "qwen-ours") strong.innerHTML = "<b>Qwen2.5-Omni + VAT-KG (Ours) </b>";
+
   else strong.textContent = sender;
   para.appendChild(strong);
   para.appendChild(document.createElement("br"));
@@ -687,8 +710,11 @@ function createChatRow(sender, text, imageSrc) {
   const bubble = document.createElement("div");
   bubble.className = "chat-bubble";
   if (sender === "User") bubble.classList.add("user");
-  else if (sender === "Base") bubble.classList.add("base");
-  else if (sender === "Ours") bubble.classList.add("ours");
+  else if (sender === "vl2") bubble.classList.add("vl2");
+  else if (sender === "qwen") bubble.classList.add("qwen");
+  else if (sender === "vl2-ours") bubble.classList.add("vl2");
+  else if (sender === "qwen-ours") bubble.classList.add("qwen");
+
 
   const pre = document.createElement("pre");
   pre.textContent = text;
