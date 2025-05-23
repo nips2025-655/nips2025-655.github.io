@@ -705,7 +705,7 @@
       "description": "Example 7",
       "turns": [
         ["User", "What type of environment is likely the setting for this audio recording?", "./static/audiocaps_qa_test_61(vl2_washing_hand).wav"],
-        ["vl2", "\" <b style='color:#d33; font-weight:550; font-family:inherit;'>Sink filling</b>\""],
+        ["vl2", "\"<b style='color:#d33; font-weight:550; font-family:inherit;'>Sink filling</b>\""],
         ["vl2-ours", "\" The video shows <b style='color:#337ab7; font-weight:550; font-family:inherit;'>a man washing his hands in a sink. </b>The setting for this audio recording is likely a bathroom or toilet, as the man is washing his hands and there is a water fixture present\""],
       ]
     },
@@ -736,9 +736,9 @@ function createChatRow(sender, text, imageSrc) {
     const emoji = document.createElement("span");
 
     const emojiImg = document.createElement("img");
-    emojiImg.style.width = "50px";  // 원하는 사이즈로 조절
+    emojiImg.style.width = "50px";  
     emojiImg.style.height = "50px";
-    emojiImg.style.borderRadius = "20%";  // 둥글게
+    emojiImg.style.borderRadius = "20%";  
 
     if (sender === "User") {
       emojiImg.src = "./static/user_12756012.png";
@@ -800,11 +800,27 @@ span.appendChild(emojiImg);
     }
     else if (imageSrc && imageSrc.endsWith(".wav")) {
       const audio = document.createElement("audio");
-      audio.controls = true;
       audio.src = imageSrc;
-      audio.style.width = "250px";
-      para.appendChild(audio);  // ✅ 여기에서만 붙임
+      audio.preload = "auto";
+
+      const button = document.createElement("button");
+      button.innerHTML = "🔊"; 
+      button.style.border = "none";
+      button.style.background = "none";
+      button.style.fontSize = "1.8rem";
+      button.style.marginBottom = "0.5rem"; 
+      button.style.cursor = "pointer";
+      button.title = "Play Audio";
+
+      button.onclick = () => {
+        audio.play();
+      };
+
+      // 숨겨진 오디오 + 버튼 삽입
+      para.appendChild(button);
+      para.appendChild(audio);
     }
+
 
      else {
       const img = document.createElement("img");
