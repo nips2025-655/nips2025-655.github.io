@@ -668,7 +668,7 @@
     {
       "description": "Example 3",
       "turns": [
-        ["User", "What is the man wearing and what is he holding?", "./static/discus.mp4"],
+        ["User", "What is the man wearing and what is he holding?", "./static/discus_noaudio.mp4"],
         ["vl2", "\"The man is wearing a white shirt and black shorts, and he is holding<b style='color:#d33; font-weight:550; font-family:inherit;'> a ball.</b>\""],
         ["vl2-M2", "\"The man in the video is wearing a white shirt and black shorts. He is holding <b style='color:#d33; font-weight:550; font-family:inherit;'> a ball</b> and appears to be practicing his throwing skills on an open field.\""],
         ["vl2-ours", "\"The man in the video is wearing a white shirt and black shorts. He is holding <b style='color:#337ab7; font-weight:550; font-family:inherit;'>a discus, which he spins around several times before throwing it off into the distance.</b>\""]
@@ -677,7 +677,7 @@
     {
       "description": "Example 4",
       "turns": [
-        ["User", "What type of practice is the man in the video doing?", "./static/taichi.mp4"],
+        ["User", "What type of practice is the man in the video doing?", "./static/taichi_noaudio.mp4"],
         ["qwen", "\"The man in the video is practicing <b style='color:#d33; font-weight:550; font-family:inherit;'>martial arts.</b>\""],
         ["qwen-M2", "\"The man in the video is performing a martial arts exercise, specifically a form of <b style='color:#d33; font-weight:550; font-family:inherit;'>martial arts known as 'Slant Flying'</b>. This exercise is part of a larger practice that includes various martial arts techniques. The video emphasizes the importance of maintaining balance and fluidity in movements, which are key aspects of martial arts training.\""],
         ["qwen-ours", "\"The man in the video is performing <b style='color:#337ab7; font-weight:550; font-family:inherit;'>Tai Chi 24 Form, </b>a structured sequence of movements that enhance physical fitness, mental clarity, and internal energy flow through slow, balanced, and synchronized movements.\""],
@@ -699,6 +699,22 @@
         ["qwen", "\" <b style='color:#d33; font-weight:550; font-family:inherit;'>The sound of a waterfall.</b>\""],
         ["qwen-M2", "\" <b style='color:#d33; font-weight:550; font-family:inherit;'>The sound of a waterfall.</b>\""],
         ["qwen-ours", "\"<b style='color:#337ab7; font-weight:550; font-family:inherit;'>hail.</b>\""]
+      ]
+    },
+    {
+      "description": "Example 7",
+      "turns": [
+        ["User", "What type of environment is likely the setting for this audio recording?", "./static/audiocaps_qa_test_61(vl2_washing_hand).wav"],
+        ["vl2", "\" <b style='color:#d33; font-weight:550; font-family:inherit;'>Sink filling</b>\""],
+        ["vl2-ours", "\" The video shows <b style='color:#337ab7; font-weight:550; font-family:inherit;'>a man washing his hands in a sink. </b>The setting for this audio recording is likely a bathroom or toilet, as the man is washing his hands and there is a water fixture present\""],
+      ]
+    },
+    {
+      "description": "Example 8",
+      "turns": [
+        ["User", "What type of environment or setting is depicted in the audio recording?", "./static/audiocaps_qa_test_61(vl2_washing_hand).wav"],
+        ["qwen", "\" <b style='color:#d33; font-weight:550; font-family:inherit;'>crowded indoor.</b>\""],
+        ["qwen-ours", "\"The audio recording depicts a setting where a <b style='color:#337ab7; font-weight:550; font-family:inherit;'>boat engine is operating,</b> suggesting a water-based environment sucha s a lake, river or sea.\""]
       ]
     }
 
@@ -728,11 +744,13 @@ function createChatRow(sender, text, imageSrc) {
       emojiImg.src = "./static/user_12756012.png";
       emojiImg.alt = "User";
     } 
-    else if (sender === "vl2", "qwen") {
+    else if (sender.startsWith("vl2") || sender.startsWith("qwen")) {
       emojiImg.src = "./static/idea_12667620.png";
       emojiImg.alt = "User";
     }
-    
+
+
+
 span.appendChild(emojiImg);
 
 
@@ -768,6 +786,7 @@ span.appendChild(emojiImg);
 
   if (imageSrc) {
     const isVideo = imageSrc.endsWith(".mp4") || imageSrc.endsWith(".webm");
+    const isAudio = imageSrc.endsWith(".wav") || imageSrc.endsWith(".mp3");
     if (isVideo) {
       const videoWrapper = document.createElement("div");
       videoWrapper.className = "chat-video-wrapper";
@@ -776,12 +795,24 @@ span.appendChild(emojiImg);
       video.controls = true;
       videoWrapper.appendChild(video);
       para.appendChild(videoWrapper);
-    } else {
+    }else if (!isAudio) {
+    const img = document.createElement("img");
+    }
+    else if (imageSrc && imageSrc.endsWith(".wav")) {
+      const audio = document.createElement("audio");
+      audio.controls = true;
+      audio.src = imageSrc;
+      audio.style.width = "250px";
+      para.appendChild(audio);  // ✅ 여기에서만 붙임
+    }
+
+     else {
       const img = document.createElement("img");
       img.src = imageSrc;
       img.style = "max-width:100%;max-height:300px;";
       para.appendChild(img);
     }
+    
   }
 
   const bubble = document.createElement("div");
@@ -791,9 +822,7 @@ span.appendChild(emojiImg);
   else if (sender === "vl2-M2") bubble.classList.add("vl2");
   else if (sender === "qwen") bubble.classList.add("qwen");
   else if (sender === "qwen-M2") bubble.classList.add("qwen");
-
   else if (sender === "vl2-ours") bubble.classList.add("vl2");
-  
   else if (sender === "qwen-ours") bubble.classList.add("qwen");
 
 
